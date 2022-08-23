@@ -2,10 +2,15 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.scss';
 import Link from 'next/link';
+import { data } from '../data.js';
 
 export default function Home() {
   return (
     <div className={styles.wrapper}>
+      {/* {data.map((data) => (
+        <h1>{data.title}</h1>
+      ))} */}
+
       <Head>
         <title>Hunger Apps</title>
         <meta name='Hello' content='Hello Peter' />
@@ -103,37 +108,7 @@ export default function Home() {
           <h2 className={styles.heading}>Explore Programs</h2>
 
           {/* List */}
-          <WorkoutList
-            items={[
-              {
-                title: 'Ultimate Course',
-                subheading: 'For Beginners',
-                stats: ['$2500', '✔ Best Seller'],
-                image: {
-                  width: 203,
-                  height: 243,
-                },
-              },
-              {
-                title: 'Fibonacci Platinum',
-                subheading: 'For Intermediates',
-                stats: ['$5000', '✔ Best Seller'],
-                image: {
-                  width: 203,
-                  height: 243,
-                },
-              },
-              {
-                title: 'Financial Astrology',
-                subheading: 'For Experts',
-                stats: ['$7500', '✔ Best Seller'],
-                image: {
-                  width: 203,
-                  height: 243,
-                },
-              },
-            ]}
-          />
+          <WorkoutList items={data} />
         </section>
       </main>
 
