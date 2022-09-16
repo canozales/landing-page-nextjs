@@ -1,11 +1,8 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.scss';
-import Link from 'next/link';
-import { data } from '../data.js';
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
-export default function Home() {
+export default function AboutUs() {
   const menuRef = useRef(null);
   const navToggle = useRef(null);
   const navClose = useRef(null);
@@ -23,7 +20,6 @@ export default function Home() {
       });
     }
   }, []);
-
   return (
     <>
       <meta charSet='UTF-8' />
@@ -33,7 +29,6 @@ export default function Home() {
         rel='stylesheet'
         href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css'
       />
-      <link rel='icon' href='/favicon.ico' />
       {/*=============== CSS ===============*/}
       <link rel='stylesheet' href='../styles/styles.css' />
       <title>Cosplay World JFX</title>
@@ -47,7 +42,7 @@ export default function Home() {
           <div className='nav__menu' id='nav-menu' ref={menuRef}>
             <ul className='nav__list'>
               <li className='nav__item'>
-                <a href='/' className='nav__link active-link'>
+                <a href='/' className='nav__link'>
                   Home
                 </a>
               </li>
@@ -58,7 +53,7 @@ export default function Home() {
               </li>
               <li className='nav__item'>
                 <Link href={'/about'}>
-                  <a className='nav__link'>About Us</a>
+                  <a className='nav__link active-link'>About Us</a>
                 </Link>
               </li>
               <a href='#' className='button button--ghost'>
@@ -81,71 +76,66 @@ export default function Home() {
           <div className='about__container container grid'>
             <div className='about__data'>
               <h2 className='section__title about__title'>
-                Cosplay World JFX dikembangkan <br /> oleh Intern DDB
+                Cosplay World JFX didirikan pada Tahun 1995 oleh Valensia
               </h2>
               <p className='about__description'>
-                Merupakan forum pagi para Cosplayer Indo. Dirancang untuk
-                memenuhi Event Cosplay Besar baik di Indonesia maupun di dunia
-                Internasional
+                Pada awalnya, JFX hanya menyediakan Sarana Fotografi dan
+                Dokumentasi untuk Berbagai Acara seperti Pernikahan dan Ulang
+                Tahun.
               </p>
-              <Link href={'/favorite'}>
-                <a className='button'>Pendaftaran</a>
-              </Link>
             </div>
             <Image
-              src='/images/warior.png'
+              src='/images/53.png'
               className={'about__img'}
               layout='responsive'
-              width={140}
-              height={170}
+              width={0}
+              height={0}
             />
           </div>
         </section>
-        {/*==================== CATEGORY ====================*/}
-        <section className='section category'>
-          <h2 className='section__title'>Daftar Layanan JFX</h2>
-          <div className='category__container container grid'>
-            <div className='category__data'>
-              <Link href={'/favorite'}>
-                <img src='/images/2.png' alt='' className='category__img' />
-              </Link>
 
-              <h3 className='category__title'>Basic</h3>
-              <p className='category__description'>Cosplay Newbies</p>
-            </div>
-            <div className='category__data'>
-              <Link href={'/favorite'}>
-                <img src='/images/26.png' alt='' className='category__img' />
-              </Link>
-
-              <h3 className='category__title'>Advanced</h3>
-              <p className='category__description'>Cosplay Lovers</p>
-            </div>
-            <div className='category__data'>
-              <Link href={'/favorite'}>
-                <img src='/images/51.png' alt='' className='category__img' />
-              </Link>
-
-              <h3 className='category__title'>VVIP</h3>
-              <p className='category__description'>Cosplay Enthusiasts</p>
+        {/*==================== ABOUT ====================*/}
+        <section className='about' id='about'>
+          <div className='about__container container grid'>
+            <Image
+              src='/images/58a.png'
+              className={'about__img'}
+              layout='responsive'
+              width={0}
+              height={0}
+            />
+            <div className='about__data'>
+              <h2 className='section__title about__title'>
+                Ekspansi besar pada Tahun 2005 kemudian Memutuskan Go Public
+              </h2>
+              <p className='about__description'>
+                JFX Memutuskan untuk melakukan Ekspansi ke sektor Fashion dan
+                Cosplay. Perusahaan listing di Bursa Efek dengan Kode Saham COSP
+              </p>
             </div>
           </div>
         </section>
-        {/*==================== OUR NEWSLETTER ====================*/}
-        <section className='section newsletter'>
-          <div className='newsletter__container container'>
-            <h2 className='section__title'>Hubungi Kami</h2>
-            <p className='newsletter__description'>
-              Untuk mendapatkan Informasi dan Promosi
-            </p>
-            <form action='' className='newsletter__form'>
-              <input
-                type='text'
-                placeholder='Masukkan Email Anda'
-                className='newsletter__input'
-              />
-              <button className='button'>Subscribe</button>
-            </form>
+
+        {/*==================== ABOUT ====================*/}
+        <section className='about' id='about'>
+          <div className='about__container container grid'>
+            <div className='about__data'>
+              <h2 className='section__title about__title'>
+                Menjadi Penyedia Layanan Cosplay terbesar di ASEAN
+              </h2>
+              <p className='about__description'>
+                Customer setia JFX berasal dari berbagai belahan Dunia mulai
+                dari Indonesia, Singapore, Malaysia, Thailand, Jepang, hingga
+                Zimbabwe.
+              </p>
+            </div>
+            <Image
+              src='/images/57.png'
+              className={'about__img'}
+              layout='responsive'
+              width={0}
+              height={0}
+            />
           </div>
         </section>
       </main>

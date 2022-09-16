@@ -1,14 +1,14 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.scss';
-import Link from 'next/link';
-import { data } from '../data.js';
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-export default function Home() {
+const DetailID = () => {
   const menuRef = useRef(null);
   const navToggle = useRef(null);
   const navClose = useRef(null);
+  const router = useRouter();
+  const title = ['Error API', 'Paket Basic', 'Paket Advanced', 'Paket VVIP'];
+  const harga = ['Error API', 'Rp 250.000', 'Rp 1.000.000', 'Rp 2.500.000'];
 
   useEffect(() => {
     if (navToggle) {
@@ -33,27 +33,29 @@ export default function Home() {
         rel='stylesheet'
         href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css'
       />
-      <link rel='icon' href='/favicon.ico' />
-      {/*=============== CSS ===============*/}
-      <link rel='stylesheet' href='../styles/styles.css' />
+      <link
+        href='https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css'
+        rel='stylesheet'
+      />
+
       <title>Cosplay World JFX</title>
       {/*==================== HEADER ====================*/}
       <header className='header' id='header'>
         <nav className='nav container'>
           <a href='#' className='nav__logo'>
-            <img src='images/konoha.png' alt='' className='nav__logo-img' />
+            <img src='../images/konoha.png' alt='' className='nav__logo-img' />
             Cosplay World JFX
           </a>
           <div className='nav__menu' id='nav-menu' ref={menuRef}>
             <ul className='nav__list'>
               <li className='nav__item'>
-                <a href='/' className='nav__link active-link'>
+                <a href='/' className='nav__link'>
                   Home
                 </a>
               </li>
               <li className='nav__item'>
                 <Link href={'/favorite'}>
-                  <a className='nav__link'>Favorite</a>
+                  <a className='nav__link active-link'>Favorite</a>
                 </Link>
               </li>
               <li className='nav__item'>
@@ -68,7 +70,7 @@ export default function Home() {
             <div className='nav__close' id='nav-close' ref={navClose}>
               <i className='bx bx-x' />
             </div>
-            <img src='images/14.png' alt='' className='nav__img' />
+            <img src='../images/14.png' alt='' className='nav__img' />
           </div>
           <div className='nav__toggle' id='nav-toggle' ref={navToggle}>
             <i className='bx bx-grid-alt' />
@@ -76,78 +78,77 @@ export default function Home() {
         </nav>
       </header>
       <main className='main'>
-        {/*==================== ABOUT ====================*/}
-        <section className='section about' id='about'>
-          <div className='about__container container grid'>
-            <div className='about__data'>
-              <h2 className='section__title about__title'>
-                Cosplay World JFX dikembangkan <br /> oleh Intern DDB
-              </h2>
-              <p className='about__description'>
-                Merupakan forum pagi para Cosplayer Indo. Dirancang untuk
-                memenuhi Event Cosplay Besar baik di Indonesia maupun di dunia
-                Internasional
-              </p>
-              <Link href={'/favorite'}>
-                <a className='button'>Pendaftaran</a>
-              </Link>
+        {/* ============== KONTEN ============== */}
+        <div className='kontainer'>
+          <form action=''>
+            <div className='row'>
+              <div className='col'>
+                <h3 className='title'>{title[router.query.id]}</h3>
+                <div className='inputBox'>
+                  <span>Nama Lengkap</span>
+                  <input type='text' placeholder='Peter Parker' />
+                </div>
+                <div className='inputBox'>
+                  <span>email</span>
+                  <input type='email' placeholder='peter123@gmail.com' />
+                </div>
+                <div className='inputBox'>
+                  <span>Alamat</span>
+                  <input
+                    type='text'
+                    placeholder='Perum Batununggal Blok A 52'
+                  />
+                </div>
+                <div className='inputBox'>
+                  <span>Kota</span>
+                  <input type='text' placeholder='Bandung' />
+                </div>
+                <div className='flex'>
+                  <div className='inputBox'>
+                    <span>Negara</span>
+                    <input type='text' placeholder='Indonesia' />
+                  </div>
+                  <div className='inputBox'>
+                    <span>Kode Pos</span>
+                    <input type='text' placeholder={40257} />
+                  </div>
+                </div>
+              </div>
+              <div className='col'>
+                <h3 className='title'>Pembayaran</h3>
+                <div className='inputBox'>
+                  <span>Dapat Menggunakan</span>
+                  <img src='../images/card_img.png' alt='' />
+                </div>
+                <div className='inputBox'>
+                  <span>Nama pada Kartu</span>
+                  <input type='text' placeholder='Peter Parker' />
+                </div>
+                <div className='inputBox'>
+                  <span>Nomor Kartu Debit</span>
+                  <input type='number' placeholder='8225-2099-4540-8830' />
+                </div>
+                <div className='inputBox'>
+                  <span>Bulan Expired</span>
+                  <input type='text' placeholder='November' />
+                </div>
+                <div className='flex'>
+                  <div className='inputBox'>
+                    <span>Tahun Expired</span>
+                    <input type='number' placeholder={2025} />
+                  </div>
+                  <div className='inputBox'>
+                    <span>CVV</span>
+                    <input type='text' placeholder={1234} />
+                  </div>
+                </div>
+              </div>
             </div>
-            <Image
-              src='/images/warior.png'
-              className={'about__img'}
-              layout='responsive'
-              width={140}
-              height={170}
-            />
-          </div>
-        </section>
-        {/*==================== CATEGORY ====================*/}
-        <section className='section category'>
-          <h2 className='section__title'>Daftar Layanan JFX</h2>
-          <div className='category__container container grid'>
-            <div className='category__data'>
-              <Link href={'/favorite'}>
-                <img src='/images/2.png' alt='' className='category__img' />
-              </Link>
-
-              <h3 className='category__title'>Basic</h3>
-              <p className='category__description'>Cosplay Newbies</p>
-            </div>
-            <div className='category__data'>
-              <Link href={'/favorite'}>
-                <img src='/images/26.png' alt='' className='category__img' />
-              </Link>
-
-              <h3 className='category__title'>Advanced</h3>
-              <p className='category__description'>Cosplay Lovers</p>
-            </div>
-            <div className='category__data'>
-              <Link href={'/favorite'}>
-                <img src='/images/51.png' alt='' className='category__img' />
-              </Link>
-
-              <h3 className='category__title'>VVIP</h3>
-              <p className='category__description'>Cosplay Enthusiasts</p>
-            </div>
-          </div>
-        </section>
-        {/*==================== OUR NEWSLETTER ====================*/}
-        <section className='section newsletter'>
-          <div className='newsletter__container container'>
-            <h2 className='section__title'>Hubungi Kami</h2>
-            <p className='newsletter__description'>
-              Untuk mendapatkan Informasi dan Promosi
-            </p>
-            <form action='' className='newsletter__form'>
-              <input
-                type='text'
-                placeholder='Masukkan Email Anda'
-                className='newsletter__input'
-              />
-              <button className='button'>Subscribe</button>
-            </form>
-          </div>
-        </section>
+            <button className='submit-btn'>
+              Pembayaran {harga[router.query.id]}
+            </button>
+          </form>
+        </div>
       </main>
       {/*==================== FOOTER ====================*/}
       <footer className='footer section'>
@@ -155,7 +156,7 @@ export default function Home() {
           <div className='footer__content'>
             <a href='#' className='footer__logo'>
               <img
-                src='images/konoha.png'
+                src='../images/konoha.png'
                 alt=''
                 className='footer__logo-img'
               />
@@ -255,4 +256,6 @@ export default function Home() {
       </footer>
     </>
   );
-}
+};
+
+export default DetailID;

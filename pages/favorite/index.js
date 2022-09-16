@@ -1,14 +1,53 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.scss';
-import Link from 'next/link';
-import { data } from '../data.js';
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
-export default function Home() {
+export default function Favorite() {
   const menuRef = useRef(null);
   const navToggle = useRef(null);
   const navClose = useRef(null);
+  const ROUTE_POST_ID = 'favorite/[id]';
+  const posts = [
+    {
+      id: 1,
+      title: 'Paket Basic',
+      desc: 'Merupakan paket yang ditujukan pada pemula. Memiliki harga yang terjangkau namun dengan pelayanan yang cukup memadai.',
+      op1: 'Makeup Sederhana',
+      op2: 'Kostum Simple',
+      op3: 'Dokumentasi Kualitas Sedang',
+      op4: 'Konsultasi Kecocokan Kostum',
+      harga: 'Rp 250.000',
+    },
+    {
+      id: 2,
+      title: 'Paket Advanced',
+      desc: 'Merupakan paket yang ditujukan pada cosplayer yang ingin bertanding pada tingkat Nasional maupun sekedar mengisi Acara Besar.',
+      op1: 'Makeup Complete',
+      op2: 'Kostum Standard sesuai Karakter yang Diinginkan',
+      op3: 'Dokumentasi dan Editing Kualitas Sedang',
+      op4: 'Konsultasi dengan Cosplayer Professional',
+      harga: 'Rp 1.000.000',
+    },
+    {
+      id: 3,
+      title: 'Paket VVIP',
+      desc: 'Merupakan paket prioritas tertinggi dengan kualitas terbaik dan terlengkap. Ditujukan terutama untuk pertandingan Internasional.',
+      op1: 'Makeup dan Hairstylist terbaik',
+      op2: 'Kostum Fullset sesuai Karakter yang Diinginkan',
+      op3: 'Dokumentasi dan Editing Kualitas Terbaik',
+      op4: 'Konsultasi 24/7 dengan Cosplayer Professional',
+      harga: 'Rp 2.500.000',
+    },
+  ];
+  const router = useRouter();
+
+  const navigate = (id) => {
+    router.push({
+      pathname: ROUTE_POST_ID,
+      query: { id },
+    });
+  };
 
   useEffect(() => {
     if (navToggle) {
@@ -23,7 +62,6 @@ export default function Home() {
       });
     }
   }, []);
-
   return (
     <>
       <meta charSet='UTF-8' />
@@ -33,9 +71,11 @@ export default function Home() {
         rel='stylesheet'
         href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css'
       />
-      <link rel='icon' href='/favicon.ico' />
-      {/*=============== CSS ===============*/}
-      <link rel='stylesheet' href='../styles/styles.css' />
+      <link
+        href='https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css'
+        rel='stylesheet'
+      />
+
       <title>Cosplay World JFX</title>
       {/*==================== HEADER ====================*/}
       <header className='header' id='header'>
@@ -47,13 +87,13 @@ export default function Home() {
           <div className='nav__menu' id='nav-menu' ref={menuRef}>
             <ul className='nav__list'>
               <li className='nav__item'>
-                <a href='/' className='nav__link active-link'>
+                <a href='/' className='nav__link'>
                   Home
                 </a>
               </li>
               <li className='nav__item'>
                 <Link href={'/favorite'}>
-                  <a className='nav__link'>Favorite</a>
+                  <a className='nav__link active-link'>Favorite</a>
                 </Link>
               </li>
               <li className='nav__item'>
@@ -76,76 +116,44 @@ export default function Home() {
         </nav>
       </header>
       <main className='main'>
-        {/*==================== ABOUT ====================*/}
-        <section className='section about' id='about'>
-          <div className='about__container container grid'>
-            <div className='about__data'>
-              <h2 className='section__title about__title'>
-                Cosplay World JFX dikembangkan <br /> oleh Intern DDB
-              </h2>
-              <p className='about__description'>
-                Merupakan forum pagi para Cosplayer Indo. Dirancang untuk
-                memenuhi Event Cosplay Besar baik di Indonesia maupun di dunia
-                Internasional
-              </p>
-              <Link href={'/favorite'}>
-                <a className='button'>Pendaftaran</a>
-              </Link>
-            </div>
-            <Image
-              src='/images/warior.png'
-              className={'about__img'}
-              layout='responsive'
-              width={140}
-              height={170}
-            />
-          </div>
-        </section>
-        {/*==================== CATEGORY ====================*/}
-        <section className='section category'>
-          <h2 className='section__title'>Daftar Layanan JFX</h2>
-          <div className='category__container container grid'>
-            <div className='category__data'>
-              <Link href={'/favorite'}>
-                <img src='/images/2.png' alt='' className='category__img' />
-              </Link>
+        {/* ----------ABOUT----------- */}
 
-              <h3 className='category__title'>Basic</h3>
-              <p className='category__description'>Cosplay Newbies</p>
-            </div>
-            <div className='category__data'>
-              <Link href={'/favorite'}>
-                <img src='/images/26.png' alt='' className='category__img' />
-              </Link>
+        <section className='about section container' id='about'>
+          <div className='about__container grid'>
+            {posts.map((post) => (
+              <div className='about__datax'>
+                <h2 className='section__title about__title'>{post.title}</h2>
 
-              <h3 className='category__title'>Advanced</h3>
-              <p className='category__description'>Cosplay Lovers</p>
-            </div>
-            <div className='category__data'>
-              <Link href={'/favorite'}>
-                <img src='/images/51.png' alt='' className='category__img' />
-              </Link>
+                <p className='about__description'>{post.desc}</p>
 
-              <h3 className='category__title'>VVIP</h3>
-              <p className='category__description'>Cosplay Enthusiasts</p>
-            </div>
-          </div>
-        </section>
-        {/*==================== OUR NEWSLETTER ====================*/}
-        <section className='section newsletter'>
-          <div className='newsletter__container container'>
-            <h2 className='section__title'>Hubungi Kami</h2>
-            <p className='newsletter__description'>
-              Untuk mendapatkan Informasi dan Promosi
-            </p>
-            <form action='' className='newsletter__form'>
-              <input
-                type='text'
-                placeholder='Masukkan Email Anda'
-                className='newsletter__input'
-              />
-              <button className='button'>Subscribe</button>
-            </form>
+                <div className='about__details'>
+                  <p className='about__details-description'>
+                    <i className='ri-checkbox-fill about__details-icon'></i>
+                    {post.op1}
+                  </p>
+                  <p className='about__details-description'>
+                    <i className='ri-checkbox-fill about__details-icon'></i>
+                    {post.op2}
+                  </p>
+                  <p className='about__details-description'>
+                    <i className='ri-checkbox-fill about__details-icon'></i>
+                    {post.op3}
+                  </p>
+                  <p className='about__details-description'>
+                    <i className='ri-checkbox-fill about__details-icon'></i>
+                    {post.op4}
+                  </p>
+                </div>
+
+                <button
+                  onClick={() => navigate(post.id)}
+                  className='button button--link button--flex'
+                >
+                  {post.harga}
+                  <i className='ri-arrow-right-down-line button__icon'></i>
+                </button>
+              </div>
+            ))}
           </div>
         </section>
       </main>
