@@ -87,9 +87,9 @@ export default function Favorite() {
           <div className='nav__menu' id='nav-menu' ref={menuRef}>
             <ul className='nav__list'>
               <li className='nav__item'>
-                <a href='/' className='nav__link'>
-                  Home
-                </a>
+                <Link href='/'>
+                  <a className='nav__link'>Home</a>
+                </Link>
               </li>
               <li className='nav__item'>
                 <Link href={'/favorite'}>
@@ -121,7 +121,7 @@ export default function Favorite() {
         <section className='about section container' id='about'>
           <div className='about__container grid'>
             {posts.map((post) => (
-              <div className='about__datax'>
+              <div className='about__datax' key={`post-${post.id}`}>
                 <h2 className='section__title about__title'>{post.title}</h2>
 
                 <p className='about__description'>{post.desc}</p>
@@ -176,6 +176,7 @@ export default function Favorite() {
               <a
                 href='https://www.facebook.com/'
                 target='_blank'
+                rel='noreferrer'
                 className='footer__social-link'
               >
                 <i className='bx bxl-facebook' />
@@ -183,6 +184,7 @@ export default function Favorite() {
               <a
                 href='https://www.instagram.com/'
                 target='_blank'
+                rel='noreferrer'
                 className='footer__social-link'
               >
                 <i className='bx bxl-instagram-alt' />
@@ -190,6 +192,7 @@ export default function Favorite() {
               <a
                 href='https://twitter.com/'
                 target='_blank'
+                rel='noreferrer'
                 className='footer__social-link'
               >
                 <i className='bx bxl-twitter' />

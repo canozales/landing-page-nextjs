@@ -42,9 +42,9 @@ export default function AboutUs() {
           <div className='nav__menu' id='nav-menu' ref={menuRef}>
             <ul className='nav__list'>
               <li className='nav__item'>
-                <a href='/' className='nav__link'>
-                  Home
-                </a>
+                <Link href='/'>
+                  <a className='nav__link'>Home</a>
+                </Link>
               </li>
               <li className='nav__item'>
                 <Link href={'/favorite'}>
@@ -158,6 +158,7 @@ export default function AboutUs() {
               <a
                 href='https://www.facebook.com/'
                 target='_blank'
+                rel='noreferrer'
                 className='footer__social-link'
               >
                 <i className='bx bxl-facebook' />
@@ -165,6 +166,7 @@ export default function AboutUs() {
               <a
                 href='https://www.instagram.com/'
                 target='_blank'
+                rel='noreferrer'
                 className='footer__social-link'
               >
                 <i className='bx bxl-instagram-alt' />
@@ -172,6 +174,7 @@ export default function AboutUs() {
               <a
                 href='https://twitter.com/'
                 target='_blank'
+                rel='noreferrer'
                 className='footer__social-link'
               >
                 <i className='bx bxl-twitter' />
