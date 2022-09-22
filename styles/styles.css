@@ -643,6 +643,41 @@ button{
   justify-self: center;
 }
 
+
+/* useState tambah Kurang */
+
+.tengah{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bungkusTambahKurang{
+  min-width: 12rem;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(73, 138, 111);
+  color: var(--title-color);
+  border-radius: .5rem;
+  transition: .3s;
+}
+.bungkusTambahKurang span{
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+.bungkusTambahKurang span.num{
+  font-size: 1.5rem;
+  border-right: 2px solid rgba(0,0,0,0.2);
+  border-left: 2px solid rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
 /*=============== NEW ARRIVALS ===============*/
 .new__container{
   padding-top: 1rem;

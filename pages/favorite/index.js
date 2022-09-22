@@ -1,9 +1,27 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 export default function Favorite() {
+  const [nominalBasic, setNominalBasic] = useState(1);
+  const [nominalMedium, setNominalMedium] = useState(1);
+  const [nominalVip, setNominalVip] = useState(1);
+
+  const [hargaBasic, setHargaBasic] = useState(250000);
+  const [hargaMedium, setHargaMedium] = useState(1000000);
+  const [hargaVip, setHargaVip] = useState(2500000);
+
+  const tombolTambahDitekan = () => {
+    setNominalBasic(nominalBasic + 1);
+    setHargaBasic(hargaBasic + 250000);
+  };
+  const tombolKurangDitekan = () => {
+    if (nominalBasic > 1) {
+      setNominalBasic(nominalBasic - 1);
+      setHargaBasic(hargaBasic - 250000);
+    }
+  };
   const menuRef = useRef(null);
   const navToggle = useRef(null);
   const navClose = useRef(null);
@@ -145,13 +163,25 @@ export default function Favorite() {
                   </p>
                 </div>
 
-                <button
-                  onClick={() => navigate(post.id)}
-                  className='button button--link button--flex'
-                >
-                  {post.harga}
-                  <i className='ri-arrow-right-down-line button__icon'></i>
-                </button>
+                <div className='tengah'>
+                  <button
+                    onClick={() => navigate(post.id)}
+                    className='button button--link button--flex'
+                  >
+                    Rp {hargaBasic.toLocaleString('id-ID')}
+                    <i className='ri-arrow-right-down-line button__icon'></i>
+                  </button>
+
+                  <div class='bungkusTambahKurang'>
+                    <span class='minus' onClick={tombolKurangDitekan}>
+                      -
+                    </span>
+                    <span class='num'>{nominalBasic}</span>
+                    <span class='plus' onClick={tombolTambahDitekan}>
+                      +
+                    </span>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
